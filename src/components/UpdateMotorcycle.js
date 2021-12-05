@@ -1,26 +1,26 @@
 import React from "react";
 import Navbar from "./Nav";
 
-class UpdatePage extends React.Component {
+class UpdateMotorcycle extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       vehicle: null,
       name: "",
       img: "",
-      horsepower: "",
+      displacement: "",
       weight: "",
     };
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleImgChange = this.handleImgChange.bind(this);
-    this.handleHorsepowerChange = this.handleHorsepowerChange.bind(this);
+    this.handleDisplacementChange = this.handleDisplacementChange.bind(this);
     this.handleWeightChange = this.handleWeightChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleReset = this.handleReset.bind(this);
   }
   componentDidMount() {
     fetch(
-      `https://itp-404-final-project-server.herokuapp.com/api/${this.props.match.params.auto}/${this.props.match.params.id}`
+      `https://itp-404-final-project-server.herokuapp.com/api/motorcycles/${this.props.match.params.id}`
     )
       .then((response) => {
         return response.json();
@@ -30,7 +30,7 @@ class UpdatePage extends React.Component {
           vehicle: data,
           name: data.name,
           img: data.img,
-          horsepower: data.horsepower,
+          displacement: data.displacement,
           weight: data.weight,
         });
       });
@@ -43,8 +43,8 @@ class UpdatePage extends React.Component {
     this.setState({ img: event.target.value });
   }
 
-  handleHorsepowerChange(event) {
-    this.setState({ horsepower: event.target.value });
+  handleDisplacementChange(event) {
+    this.setState({ displacement: event.target.value });
   }
 
   handleWeightChange(event) {
@@ -55,13 +55,13 @@ class UpdatePage extends React.Component {
     event.preventDefault();
     console.log("Submitted");
     fetch(
-      `https://itp-404-final-project-server.herokuapp.com/api/${this.props.match.params.auto}/${this.props.match.params.id}`,
+      `https://itp-404-final-project-server.herokuapp.com/api/motorcycles/${this.props.match.params.id}`,
       {
         method: "PUT",
         body: JSON.stringify({
           name: this.state.name,
           img: this.state.img,
-          horsepower: parseInt(this.state.horsepower),
+          displacement: parseInt(this.state.displacement),
           weight: parseInt(this.state.weight),
         }),
         headers: {
@@ -77,7 +77,7 @@ class UpdatePage extends React.Component {
           vehicle: data,
           name: data.name,
           img: data.img,
-          horsepower: data.horsepower,
+          displacement: data.displacement,
           weight: data.weight,
         });
       });
@@ -88,7 +88,7 @@ class UpdatePage extends React.Component {
     this.setState({
       name: vehicle.name,
       img: vehicle.img,
-      horsepower: vehicle.horsepower,
+      displacement: vehicle.displacement,
       weight: vehicle.weight,
     });
   }
@@ -127,14 +127,14 @@ class UpdatePage extends React.Component {
               </div>
               <div className="my-4 mx-2">
                 <label className="form-label" htmlFor="power">
-                  Horsepower
+                  Displacement
                 </label>
                 <input
                   type="number"
                   className="form-control"
                   id="power"
-                  value={this.state.horsepower}
-                  onChange={this.handleHorsepowerChange}
+                  value={this.state.displacement}
+                  onChange={this.handleDisplacementChange}
                 />
               </div>
               <div className="my-4 mx-2">
@@ -174,4 +174,4 @@ class UpdatePage extends React.Component {
   }
 }
 
-export default UpdatePage;
+export default UpdateMotorcycle;

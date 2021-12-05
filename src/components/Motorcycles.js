@@ -1,14 +1,54 @@
 import React from "react";
+import DisplayTile from "./DisplayTile";
 import Navbar from "./Nav";
 
 class Motorcycles extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      motorcycles: [],
+    };
+  }
+  componentDidMount() {
+    fetch(`https://itp-404-final-project-server.herokuapp.com/api/motorcycles`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        data.map((motorcycle) => console.log(motorcycle));
+        this.setState({ motorcycles: data });
+      });
+  }
   render() {
-    return (
-      <>
-        <Navbar activePosition={1} />
-        <h1>Motorcycles</h1>
-      </>
-    );
+    if (this.state.motorcycles.length > 0) {
+      return (
+        <>
+          <Navbar activePosition={-1} />
+          <div className="motorcycles">
+            <h1>Motorcycle</h1>
+            {this.state.motorcycles.map((motorcycle) => {
+              return (
+                <DisplayTile
+                  key={motorcycle.id}
+                  vehicle={motorcycle}
+                  view={true}
+                  type="motorcycles"
+                />
+              );
+            })}
+          </div>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Navbar activePosition={-1} />
+          <div className="motorcycles">
+            <h1>Motorcycles</h1>
+          </div>
+        </>
+      );
+    }
   }
 }
 

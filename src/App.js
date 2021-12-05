@@ -6,8 +6,8 @@ import Cars from "./components/Cars";
 import Motorcycles from "./components/Motorcycles";
 import "./App.css";
 import VehiclePage from "./components/VehiclePage";
-import CarPage from "./components/CarPage";
-import UpdatePage from "./components/UpdatePage";
+import UpdateCar from "./components/UpdateCar";
+import UpdateMotorcycle from "./components/UpdateMotorcycle";
 
 class App extends React.Component {
   render() {
@@ -15,7 +15,11 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <Switch>
-            <Route path="/:auto/:id/update" component={UpdatePage} />
+            <Route
+              path="/motorcycles/:id/update"
+              component={UpdateMotorcycle}
+            />
+            <Route path="/cars/:id/update" component={UpdateCar} />
             <Route path="/:auto/:id" component={VehiclePage} />
             <Route path="/cars" component={Cars} />
             <Route path="/motorcycles" component={Motorcycles} />

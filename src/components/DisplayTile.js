@@ -11,6 +11,9 @@ class DisplayTile extends React.Component {
           {this.props.type === "cars" && (
             <p>Horsepower: {this.props.vehicle.horsepower}</p>
           )}
+          {this.props.type === "motorcycles" && (
+            <p>Displacement: {this.props.vehicle.displacement}</p>
+          )}
           <p className="last-p">Curb Weight: {this.props.vehicle.weight}</p>
           {this.props.view ? (
             <Link to={`/${this.props.type}/${this.props.vehicle.id}`}>
