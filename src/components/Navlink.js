@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import PropTypes from "prop-types";
-import "./Navlink.css";
+import { Link } from "react-router-dom";
 
 class NavLink extends React.Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class NavLink extends React.Component {
   }
   getStyle() {
     let style = {};
-    if (this.props.active) {
+    if (this.props.activePosition === this.props.position) {
       style.fontWeight = "bold";
     }
     let percent = Math.abs(this.props.position) * 10;
@@ -24,9 +24,9 @@ class NavLink extends React.Component {
   render() {
     return (
       <>
-        <a href={this.props.url} style={this.getStyle()}>
+        <Link to={this.props.url} style={this.getStyle()}>
           {this.props.text}
-        </a>
+        </Link>
       </>
     );
   }
@@ -36,7 +36,7 @@ NavLink.propTypes = {
   url: PropTypes.string,
   text: PropTypes.string,
   position: PropTypes.number,
-  active: PropTypes.bool,
+  activePosition: PropTypes.number,
 };
 
 export default NavLink;
