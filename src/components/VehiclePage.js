@@ -6,7 +6,7 @@ class VehiclePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      car: null,
+      vehicle: null,
     };
   }
   componentDidMount() {
@@ -17,16 +17,20 @@ class VehiclePage extends React.Component {
         return response.json();
       })
       .then((data) => {
-        this.setState({ car: data });
+        this.setState({ vehicle: data });
       });
   }
   render() {
     return (
       <>
-        <Navbar activePosition={-1} />
+        <Navbar />
         <div className="vehicle-page">
-          <h1>{this.state.car && this.state.car.name}</h1>
-          <DisplayTile car={this.state.car} view={false} />
+          <h1>{this.state.vehicle && this.state.vehicle.name}</h1>
+          <DisplayTile
+            vehicle={this.state.vehicle}
+            type={this.props.match.params.auto}
+            view={false}
+          />
         </div>
       </>
     );
