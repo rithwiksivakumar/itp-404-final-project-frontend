@@ -41,3 +41,6 @@ img {
 .display-tile:hover {
   background-color: #f0f0f0;
 }
+.display-tile .last-p {
+  margin-bottom: 20px;
+}

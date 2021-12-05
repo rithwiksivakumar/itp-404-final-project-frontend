@@ -1,8 +1,8 @@
 import React from "react";
-import Navbar from "./Nav";
 import DisplayTile from "./DisplayTile";
+import Navbar from "./Nav";
 
-class VehiclePage extends React.Component {
+class CarPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,7 +11,7 @@ class VehiclePage extends React.Component {
   }
   componentDidMount() {
     fetch(
-      `https://itp-404-final-project-server.herokuapp.com/api/${this.props.match.params.auto}/${this.props.match.params.id}`
+      `https://itp-404-final-project-server.herokuapp.com/api/cars/${this.props.match.params.id}`
     )
       .then((response) => {
         return response.json();
@@ -24,7 +24,7 @@ class VehiclePage extends React.Component {
     return (
       <>
         <Navbar activePosition={-1} />
-        <div className="vehicle-page">
+        <div className="car-page">
           <h1>{this.state.car && this.state.car.name}</h1>
           <DisplayTile car={this.state.car} view={false} />
         </div>
@@ -33,4 +33,4 @@ class VehiclePage extends React.Component {
   }
 }
 
-export default VehiclePage;
+export default CarPage;

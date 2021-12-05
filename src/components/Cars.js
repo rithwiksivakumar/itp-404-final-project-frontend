@@ -27,7 +27,7 @@ class Cars extends React.Component {
           <div className="cars">
             <h1>Cars</h1>
             {this.state.cars.map((car) => {
-              return <DisplayTile key={car.id} car={car} />;
+              return <DisplayTile key={car.id} car={car} view={true} />;
             })}
           </div>
         </>
