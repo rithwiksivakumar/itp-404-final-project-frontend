@@ -57,3 +57,7 @@ img {
 .display-tile .last-p {
   margin-bottom: 20px;
 }
+
+.modal {
+  display: block !important;
+}

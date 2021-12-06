@@ -16,7 +16,6 @@ class Motorcycles extends React.Component {
         return response.json();
       })
       .then((data) => {
-        data.map((motorcycle) => console.log(motorcycle));
         this.setState({ motorcycles: data });
       });
   }

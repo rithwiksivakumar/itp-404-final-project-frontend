@@ -16,7 +16,6 @@ class Cars extends React.Component {
         return response.json();
       })
       .then((data) => {
-        data.map((car) => console.log(car));
         this.setState({ cars: data });
       });
   }
