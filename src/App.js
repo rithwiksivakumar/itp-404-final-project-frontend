@@ -12,6 +12,7 @@ import AddCar from "./components/AddCar";
 import AddMotorcycle from "./components/AddMotorcycle";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NotFound from "./components/NotFound";
 
 class App extends React.Component {
   render() {
@@ -19,17 +20,19 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <Switch>
-            <Route path="/cars/add" component={AddCar} />
-            <Route path="/motorcycles/add" component={AddMotorcycle} />
+            <Route exact path="/cars/add" component={AddCar} />
+            <Route exact path="/motorcycles/add" component={AddMotorcycle} />
             <Route
+              exact
               path="/motorcycles/:id/update"
               component={UpdateMotorcycle}
             />
-            <Route path="/cars/:id/update" component={UpdateCar} />
-            <Route path="/:auto/:id" component={VehiclePage} />
-            <Route path="/cars" component={Cars} />
-            <Route path="/motorcycles" component={Motorcycles} />
-            <Route path="/" component={Home} />
+            <Route exact path="/cars/:id/update" component={UpdateCar} />
+            <Route exact path="/:auto/:id" component={VehiclePage} />
+            <Route exact path="/cars" component={Cars} />
+            <Route exact path="/motorcycles" component={Motorcycles} />
+            <Route exact path="/" component={Home} />
+            <Route path="/" component={NotFound} />
           </Switch>
           <ToastContainer />
         </Router>
