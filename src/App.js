@@ -8,6 +8,8 @@ import "./App.css";
 import VehiclePage from "./components/VehiclePage";
 import UpdateCar from "./components/UpdateCar";
 import UpdateMotorcycle from "./components/UpdateMotorcycle";
+import AddCar from "./components/AddCar";
+import AddMotorcycle from "./components/AddMotorcycle";
 
 class App extends React.Component {
   render() {
@@ -15,6 +17,8 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <Switch>
+            <Route path="/cars/add" component={AddCar} />
+            <Route path="/motorcycles/add" component={AddMotorcycle} />
             <Route
               path="/motorcycles/:id/update"
               component={UpdateMotorcycle}

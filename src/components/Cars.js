@@ -1,6 +1,7 @@
 import React from "react";
 import DisplayTile from "./DisplayTile";
 import Navbar from "./Nav";
+import { Link } from "react-router-dom";
 
 class Cars extends React.Component {
   constructor(props) {
@@ -26,6 +27,13 @@ class Cars extends React.Component {
           <Navbar activePosition={-1} />
           <div className="cars">
             <h1>Cars</h1>
+            <div className="add-button-wrapper">
+              <Link to="/cars/add">
+                <button type="button" className="btn btn-primary">
+                  Add Car
+                </button>
+              </Link>
+            </div>
             {this.state.cars.map((car) => {
               return (
                 <DisplayTile

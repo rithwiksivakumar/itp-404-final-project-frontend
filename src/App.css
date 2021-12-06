@@ -10,7 +10,8 @@ a {
 
 .home,
 .cars,
-.update-page {
+.update-page,
+.add-page {
   margin-left: auto;
   margin-right: auto;
   width: 800px;
@@ -19,6 +20,17 @@ a {
   padding-top: 0px;
   text-align: center;
   font-size: 18px;
+}
+
+.cars .add-button-wrapper,
+.motorcycles .add-button-wrapper {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.cars .add-button-wrapper button,
+.motorcycles .add-button-wrapper button {
+  width: 144px;
 }
 
 .display-tile {

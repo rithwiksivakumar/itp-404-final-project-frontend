@@ -127,7 +127,7 @@ class UpdateMotorcycle extends React.Component {
               </div>
               <div className="my-4 mx-2">
                 <label className="form-label" htmlFor="power">
-                  Displacement
+                  Displacement (cc)
                 </label>
                 <input
                   type="number"

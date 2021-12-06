@@ -1,6 +1,7 @@
 import React from "react";
 import DisplayTile from "./DisplayTile";
 import Navbar from "./Nav";
+import { Link } from "react-router-dom";
 
 class Motorcycles extends React.Component {
   constructor(props) {
@@ -23,9 +24,16 @@ class Motorcycles extends React.Component {
     if (this.state.motorcycles.length > 0) {
       return (
         <>
-          <Navbar activePosition={-1} />
+          <Navbar activePosition={1} />
           <div className="motorcycles">
             <h1>Motorcycle</h1>
+            <div className="add-button-wrapper">
+              <Link to="/motorcycles/add">
+                <button type="button" className="btn btn-primary">
+                  Add Motorcycle
+                </button>
+              </Link>
+            </div>
             {this.state.motorcycles.map((motorcycle) => {
               return (
                 <DisplayTile
