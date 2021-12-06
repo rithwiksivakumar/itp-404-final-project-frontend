@@ -11,6 +11,7 @@ class Cars extends React.Component {
     };
   }
   componentDidMount() {
+    document.title = "Cars List";
     fetch(`https://itp-404-final-project-server.herokuapp.com/api/cars`)
       .then((response) => {
         return response.json();

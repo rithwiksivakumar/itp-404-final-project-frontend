@@ -3,6 +3,9 @@ import Comments from "./Comments";
 import Navbar from "./Nav";
 
 class Home extends React.Component {
+  componentDidMount() {
+    document.title = "Home Page";
+  }
   render() {
     return (
       <>

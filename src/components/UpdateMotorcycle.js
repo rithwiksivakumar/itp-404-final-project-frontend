@@ -20,6 +20,8 @@ class UpdateMotorcycle extends React.Component {
     this.handleReset = this.handleReset.bind(this);
   }
   componentDidMount() {
+    document.title = "Update Motorcycle";
+
     fetch(
       `https://itp-404-final-project-server.herokuapp.com/api/motorcycles/${this.props.match.params.id}`
     )

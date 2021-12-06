@@ -18,6 +18,7 @@ class VehiclePage extends React.Component {
       })
       .then((data) => {
         this.setState({ vehicle: data });
+        document.title = data.name;
       });
   }
   render() {

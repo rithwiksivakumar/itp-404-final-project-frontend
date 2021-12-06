@@ -65,6 +65,9 @@ class AddMotorcycle extends React.Component {
         toast.success(`${data.name} has been successfully added!`);
       });
   }
+  componentDidMount() {
+    document.title = "Add Motorcycle";
+  }
 
   render() {
     return (

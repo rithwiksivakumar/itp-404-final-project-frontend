@@ -11,6 +11,7 @@ class Motorcycles extends React.Component {
     };
   }
   componentDidMount() {
+    document.title = "Motorcycles List";
     fetch(`https://itp-404-final-project-server.herokuapp.com/api/motorcycles`)
       .then((response) => {
         return response.json();

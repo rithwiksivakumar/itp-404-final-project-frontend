@@ -63,6 +63,10 @@ class AddCar extends React.Component {
       });
   }
 
+  componentDidMount() {
+    document.title = "Add Car";
+  }
+
   render() {
     return (
       <>

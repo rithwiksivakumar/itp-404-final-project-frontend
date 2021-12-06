@@ -20,6 +20,8 @@ class UpdateCar extends React.Component {
     this.handleReset = this.handleReset.bind(this);
   }
   componentDidMount() {
+    document.title = "Update Car";
+
     fetch(
       `https://itp-404-final-project-server.herokuapp.com/api/cars/${this.props.match.params.id}`
     )
