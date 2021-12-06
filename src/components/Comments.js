@@ -8,12 +8,16 @@ class Comments extends React.Component {
       comments: [],
       name: "",
       text: "",
+      invalidSubmit: false,
     };
     this.loadComments = this.loadComments.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  // checkFormValidity(attribute) {
+  //   attribute.length <= 0;
+  // }
   handleNameChange(event) {
     this.setState({ name: event.target.value });
   }
@@ -22,24 +26,30 @@ class Comments extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    fetch(`https://itp-404-final-project-server.herokuapp.com/api/comments`, {
-      method: "POST",
-      body: JSON.stringify({
-        author: this.state.name,
-        text: this.state.text,
-        timestamp: Date.now(),
-      }),
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((result) => {
-        return result.json();
+    let valid = this.state.name.length > 0 && this.state.text.length > 0;
+    if (valid) {
+      this.setState({ invalidSubmit: false });
+      fetch(`https://itp-404-final-project-server.herokuapp.com/api/comments`, {
+        method: "POST",
+        body: JSON.stringify({
+          author: this.state.name,
+          text: this.state.text,
+          timestamp: Date.now(),
+        }),
+        headers: {
+          "Content-type": "application/json",
+        },
       })
-      .then((data) => {
-        toast.success("Sucessfully added comment");
-        this.loadComments();
-      });
+        .then((result) => {
+          return result.json();
+        })
+        .then((data) => {
+          toast.success("Sucessfully added comment");
+          this.loadComments();
+        });
+    } else {
+      this.setState({ invalidSubmit: true });
+    }
   }
   loadComments() {
     fetch(
@@ -88,22 +98,43 @@ class Comments extends React.Component {
           <div>
             <input
               type="name"
-              className="form-control"
+              className={
+                this.state.name.length <= 0
+                  ? "form-control is-invalid"
+                  : "form-control"
+              }
               id="name"
               placeholder="Name"
               value={this.state.name}
               onChange={this.handleNameChange}
             />
+            <div className="invalid-feedback">Name cannot be empty</div>
           </div>
-          <div>
+          <div className="my-3">
             <textarea
-              className="form-control my-3"
+              className={
+                this.state.text.length <= 0
+                  ? "form-control is-invalid"
+                  : "form-control"
+              }
               id="text"
               placeholder="Add a comment"
               style={{ height: "160px" }}
               value={this.state.text}
               onChange={this.handleTextChange}
             />
+            <div className="invalid-feedback">Comment cannot be empty</div>
+          </div>
+          <div>
+            <p
+              style={{
+                color: "red",
+                fontSize: "14px",
+                display: this.state.invalidSubmit ? "block" : "none",
+              }}
+            >
+              Unable to Add Comment
+            </p>
           </div>
           <button className="btn btn-primary" type="submit">
             Submit

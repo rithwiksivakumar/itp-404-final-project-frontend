@@ -52,7 +52,6 @@ class AddCar extends React.Component {
     valid = valid && this.checkFormValidity(this.state.img, false)[2];
     valid = valid && this.checkFormValidity(this.state.horsepower, true)[2];
     valid = valid && this.checkFormValidity(this.state.weight, true)[2];
-    console.log(valid);
     if (valid) {
       this.setState({ invalidSubmit: false });
       fetch(`https://itp-404-final-project-server.herokuapp.com/api/cars/`, {
