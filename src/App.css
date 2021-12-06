@@ -61,3 +61,12 @@ img {
 .modal {
   display: block !important;
 }
+.comment-wrapper {
+  margin-top: 24px;
+}
+.comment .date {
+  font-size: 12px;
+}
+.comment .author {
+  margin-bottom: 4px;
+}
