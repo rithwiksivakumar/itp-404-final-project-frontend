@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Nav";
+import { toast } from "react-toastify";
 
 class UpdateMotorcycle extends React.Component {
   constructor(props) {
@@ -80,6 +81,7 @@ class UpdateMotorcycle extends React.Component {
           displacement: data.displacement,
           weight: data.weight,
         });
+        toast.success(`${data.name} has been successfully updated!`);
       });
   }
 

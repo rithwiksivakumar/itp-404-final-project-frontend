@@ -10,6 +10,8 @@ import UpdateCar from "./components/UpdateCar";
 import UpdateMotorcycle from "./components/UpdateMotorcycle";
 import AddCar from "./components/AddCar";
 import AddMotorcycle from "./components/AddMotorcycle";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class App extends React.Component {
   render() {
@@ -29,6 +31,7 @@ class App extends React.Component {
             <Route path="/motorcycles" component={Motorcycles} />
             <Route path="/" component={Home} />
           </Switch>
+          <ToastContainer />
         </Router>
       </div>
     );

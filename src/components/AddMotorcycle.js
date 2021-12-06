@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 import Navbar from "./Nav";
 
 class AddMotorcycle extends React.Component {
@@ -61,6 +62,7 @@ class AddMotorcycle extends React.Component {
           displacement: data.displacement,
           weight: data.weight,
         });
+        toast.success(`${data.name} has been successfully added!`);
       });
   }
 

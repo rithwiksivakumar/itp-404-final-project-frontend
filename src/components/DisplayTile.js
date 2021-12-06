@@ -1,6 +1,7 @@
 import Modal from "./Modal";
 import React from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 class DisplayTile extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class DisplayTile extends React.Component {
       { method: "DELETE" }
     ).then((data) => {
       this.setState({ modalOpen: false });
+      toast.success(`${this.props.vehicle.name} is successfully deleted`);
     });
   }
   render() {
