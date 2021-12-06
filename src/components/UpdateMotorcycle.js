@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Nav";
+import NotFound from "./NotFound";
 import { toast } from "react-toastify";
 
 class UpdateMotorcycle extends React.Component {
@@ -29,13 +30,21 @@ class UpdateMotorcycle extends React.Component {
         return response.json();
       })
       .then((data) => {
-        this.setState({
-          vehicle: data,
-          name: data.name,
-          img: data.img,
-          displacement: data.displacement,
-          weight: data.weight,
-        });
+        if (
+          data !== null &&
+          data !== undefined &&
+          data.id !== this.props.match.params.id
+        ) {
+          this.setState({ vehicle: -1 });
+        } else {
+          this.setState({
+            vehicle: data,
+            name: data.name,
+            img: data.img,
+            displacement: data.displacement,
+            weight: data.weight,
+          });
+        }
       });
   }
   handleNameChange(event) {
@@ -98,7 +107,7 @@ class UpdateMotorcycle extends React.Component {
   }
 
   render() {
-    if (this.state.vehicle != null) {
+    if (this.state.vehicle != null && this.state.vehicle !== -1) {
       return (
         <>
           <Navbar />
@@ -165,6 +174,12 @@ class UpdateMotorcycle extends React.Component {
               </button>
             </form>
           </div>
+        </>
+      );
+    } else if (this.state.vehicle === -1) {
+      return (
+        <>
+          <NotFound />
         </>
       );
     } else {

@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Nav";
+import NotFound from "./NotFound";
 import DisplayTile from "./DisplayTile";
 
 class VehiclePage extends React.Component {
@@ -17,24 +18,44 @@ class VehiclePage extends React.Component {
         return response.json();
       })
       .then((data) => {
-        this.setState({ vehicle: data });
-        document.title = data.name;
+        if (
+          data !== null &&
+          data !== undefined &&
+          data.id !== this.props.match.params.id
+        ) {
+          this.setState({ vehicle: -1 });
+        } else {
+          this.setState({ vehicle: data });
+          document.title = data.name;
+        }
       });
   }
   render() {
-    return (
-      <>
-        <Navbar />
-        <div className="vehicle-page">
-          <h1>{this.state.vehicle && this.state.vehicle.name}</h1>
-          <DisplayTile
-            vehicle={this.state.vehicle}
-            type={this.props.match.params.auto}
-            view={false}
-          />
-        </div>
-      </>
-    );
+    if (
+      this.state.vehicle !== -1 &&
+      (this.props.match.params.auto === "motorcycles" ||
+        this.props.match.params.auto === "cars")
+    ) {
+      return (
+        <>
+          <Navbar />
+          <div className="vehicle-page">
+            <h1>{this.state.vehicle && this.state.vehicle.name}</h1>
+            <DisplayTile
+              vehicle={this.state.vehicle}
+              type={this.props.match.params.auto}
+              view={false}
+            />
+          </div>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <NotFound />
+        </>
+      );
+    }
   }
 }
 
