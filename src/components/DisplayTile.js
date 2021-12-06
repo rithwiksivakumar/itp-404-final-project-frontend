@@ -24,13 +24,21 @@ class DisplayTile extends React.Component {
     if (this.props.vehicle != null) {
       return (
         <div className="display-tile">
-          <img src={this.props.vehicle.img} alt="vehicle" />
-          <p>{this.props.vehicle.name}</p>
+          <img
+            data-testid="auto-image"
+            src={this.props.vehicle.img}
+            alt="vehicle"
+          />
+          <p data-testid="auto-name">{this.props.vehicle.name}</p>
           {this.props.type === "cars" && (
-            <p>Horsepower: {this.props.vehicle.horsepower}</p>
+            <p data-testid="auto-horsepower">
+              Horsepower: {this.props.vehicle.horsepower}
+            </p>
           )}
           {this.props.type === "motorcycles" && (
-            <p>Displacement: {this.props.vehicle.displacement}</p>
+            <p data-testid="auto-displacement">
+              Displacement: {this.props.vehicle.displacement}
+            </p>
           )}
           <p className="last-p">Curb Weight: {this.props.vehicle.weight}</p>
           {this.props.view ? (

@@ -3,11 +3,6 @@ import Comments from "./Comments";
 import Navbar from "./Nav";
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    let dates = new Date(1638762811428);
-    console.log(JSON.stringify(dates));
-  }
   render() {
     return (
       <>

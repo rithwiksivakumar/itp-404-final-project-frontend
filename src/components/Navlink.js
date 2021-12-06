@@ -24,7 +24,7 @@ class NavLink extends React.Component {
   render() {
     return (
       <>
-        <Link to={this.props.url} style={this.getStyle()}>
+        <Link to={this.props.url} style={this.getStyle()} data-testid="navlink">
           {this.props.text}
         </Link>
       </>

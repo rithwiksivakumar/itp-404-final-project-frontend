@@ -40,6 +40,7 @@ class Cars extends React.Component {
                   vehicle={car}
                   view={true}
                   type="cars"
+                  data-testid="test-car"
                 />
               );
             })}

@@ -67,7 +67,7 @@ class AddCar extends React.Component {
     return (
       <>
         <Navbar />
-        <div className="add-page">
+        <div className="add-page" data-testid="add-car">
           <h1>Add Car</h1>
           <form onSubmit={this.handleSubmit}>
             <div className="mx-2">
